@@ -12,7 +12,6 @@ function Routing() {
             </Switch>
         </Router>
     );
-  
 }
 
 export default Routing;
