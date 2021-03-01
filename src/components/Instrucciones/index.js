@@ -8,7 +8,9 @@ const Instrucciones = () =>{
             <Card.Body>
                 <Card.Title>¡Busca tu farmacia de turno más cercana!</Card.Title>
                 <Card.Text>
-                    Mediante filtros podras encontrar las farmacias de turno dependiendo del sector.
+                    Mediante filtros podras encontrar las farmacias de turno dependiendo del sector.<br/>
+                    Puedes filtrar sólo por comuna y/o nombre de local.<br/>
+                    NOTA: Al superar los 15 registros, MAPBOX falla al mostrar todos los mapas.
                 </Card.Text>
             </Card.Body>
         </Card>

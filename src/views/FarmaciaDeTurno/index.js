@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import {Form , Row, Button, Col, Container, Alert} from 'react-bootstrap';
+import {Form , Row, Button, Col, Container, Alert, Spinner} from 'react-bootstrap';
 import { obtenerComunas, obtenerFarmaciasTurno } from '../../services';
 import NavBarFarmanet from '../../components/NavBarFarmanet'; 
 import Filtros from '../../components/Filtros';
@@ -13,6 +13,7 @@ const FarmaciaDeTurno = () => {
     const [comunas,setComunas] = useState();
     const [farmaciasTurno,setFarmaciasTurno] = useState([]);
     const [show, setShow] = useState(false);
+    const [showSpinner, setShowSpinner] = useState(false);
 
     const fetchData = useCallback(async () => {
     
@@ -55,6 +56,7 @@ const FarmaciaDeTurno = () => {
     const onSubmitFrom = async (values) => {
 
         setShow(false);
+        setShowSpinner(true);
 
         const comuna = comunas.filter(
             (com) =>
@@ -68,6 +70,7 @@ const FarmaciaDeTurno = () => {
         
         try {    
             const { data } = await obtenerFarmaciasTurno(formObj);
+            setShowSpinner(false);
             if(data.length === 0){
                 setShow(true);
             }
@@ -136,7 +139,14 @@ const FarmaciaDeTurno = () => {
                     null
                 }
 
-                
+                { showSpinner 
+                ?
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>
+                :
+                    null
+                }
 
                 {
                     farmaciasTurno && farmaciasTurno.map((farmacia)=>(
