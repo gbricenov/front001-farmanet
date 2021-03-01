@@ -4,7 +4,7 @@ import solucion_planteada from '../../images/solucion_planteada.png';
 import solucion_futuro from '../../images/solucion_futuro.png';
 import nube from '../../images/nube.JPG';
 
-const EsquemasDocumentacion = () =>{
+const ContenidoDocumentacion = () =>{
     return(
         <Card>
             <Card.Header>Documentación asociada al proyecto</Card.Header>
@@ -45,4 +45,4 @@ const EsquemasDocumentacion = () =>{
 
 }
 
-export default EsquemasDocumentacion;
+export default ContenidoDocumentacion;

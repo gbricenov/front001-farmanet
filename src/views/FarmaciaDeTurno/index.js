@@ -15,8 +15,8 @@ const FarmaciaDeTurno = () => {
     const [show, setShow] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
 
+    // Obtención de comunas
     const fetchData = useCallback(async () => {
-    
         try {    
           const { data } = await obtenerComunas();
           setComunas(data);
@@ -127,11 +127,11 @@ const FarmaciaDeTurno = () => {
 
                 )}
                 </Formik>
+                
                 { show ? 
                     <>
                         <br/>
                         <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-                            
                             No existen datos para el filtro.
                         </Alert>
                     </>

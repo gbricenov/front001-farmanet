@@ -1,4 +1,4 @@
-import EsquemasDocumentacion  from '../../components/EsquemasDocumentacion';
+import ContenidoDocumentacion  from '../../components/ContenidoDocumentacion';
 import NavBarFarmanet from '../../components/NavBarFarmanet';
 import {Container} from 'react-bootstrap';
 
@@ -9,9 +9,7 @@ const Documentacion = () => {
         <NavBarFarmanet/>
         <br/>
         <Container>
-
-            <EsquemasDocumentacion/>
-
+            <ContenidoDocumentacion/>
         </Container>
     </>
  

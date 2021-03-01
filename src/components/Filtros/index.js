@@ -45,7 +45,7 @@ const Filtros = ({
             <Form.Control
                 type="text"
                 name="nombreLocal"
-                placeholder="Nombre del local"
+                placeholder="Ahumada, Cruz Verde, etc"
                 onChange={handleChange}
                 value={nombreLocal}
                 maxLength="50"
