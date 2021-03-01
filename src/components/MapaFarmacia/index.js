@@ -9,8 +9,6 @@ const MapaFarmacia = (farmacia) => {
   farmacia = farmacia.farmacia;
   const mapContainerRef = useRef(null);
 
-  console.log(mapContainerRef.current)
-
   useEffect(() => {
     
     const map = new mapboxgl.Map({

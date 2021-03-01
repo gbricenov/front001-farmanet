@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import {Form , Row, Button, Col, Container} from 'react-bootstrap';
+import {Form , Row, Button, Col, Container, Alert} from 'react-bootstrap';
 import { obtenerComunas, obtenerFarmaciasTurno } from '../../services';
 import NavBarFarmanet from '../../components/NavBarFarmanet'; 
 import Filtros from '../../components/Filtros';
@@ -12,6 +12,7 @@ const FarmaciaDeTurno = () => {
 
     const [comunas,setComunas] = useState();
     const [farmaciasTurno,setFarmaciasTurno] = useState([]);
+    const [show, setShow] = useState(false);
 
     const fetchData = useCallback(async () => {
     
@@ -53,6 +54,8 @@ const FarmaciaDeTurno = () => {
 
     const onSubmitFrom = async (values) => {
 
+        setShow(false);
+
         const comuna = comunas.filter(
             (com) =>
               parseInt(values.comunaId) === parseInt(com.idComuna)
@@ -65,6 +68,9 @@ const FarmaciaDeTurno = () => {
         
         try {    
             const { data } = await obtenerFarmaciasTurno(formObj);
+            if(data.length === 0){
+                setShow(true);
+            }
             setFarmaciasTurno(data);
           } catch (error) {
               console.error('Error en la obtención de los datos de farmacias de turno');
@@ -118,6 +124,20 @@ const FarmaciaDeTurno = () => {
 
                 )}
                 </Formik>
+                { show ? 
+                    <>
+                        <br/>
+                        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+                            
+                            No existen datos para el filtro.
+                        </Alert>
+                    </>
+                :
+                    null
+                }
+
+                
+
                 {
                     farmaciasTurno && farmaciasTurno.map((farmacia)=>(
                         <Farmacias
